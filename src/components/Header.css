@@ -1,0 +1,169 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  border-bottom: 1px solid transparent;
+  background: rgb(8 11 16 / 72%);
+  backdrop-filter: blur(14px);
+  transition:
+    background-color 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+
+.site-header.is-scrolled {
+  border-bottom-color: var(--border-subtle);
+  background: rgb(8 11 16 / 88%);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 28%);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 100%;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.brand-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  object-fit: cover;
+  transition: transform 0.25s var(--ease);
+}
+
+.brand:hover .brand-logo {
+  transform: rotate(-5deg) scale(1.05);
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-desktop a {
+  padding: 0.55rem 0.8rem;
+  border-radius: 8px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.nav-desktop a:hover {
+  color: var(--text);
+  background: rgb(255 255 255 / 4%);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.header-github {
+  min-height: 42px;
+  padding-inline: 0.85rem;
+}
+
+.header-download {
+  display: none;
+  min-height: 42px;
+  padding-inline: 1rem;
+}
+
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 3%);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.mobile-panel {
+  position: absolute;
+  inset: var(--header-h) 0 auto;
+  border-bottom: 1px solid var(--border);
+  background: rgb(10 14 20 / 98%);
+  padding: 1rem 0 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.2s var(--ease),
+    transform 0.2s var(--ease),
+    visibility 0.2s;
+}
+
+.mobile-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-mobile {
+  display: grid;
+  gap: 0.35rem;
+  width: min(100% - 1.5rem, var(--max-width));
+  margin-inline: auto;
+}
+
+.nav-mobile a {
+  padding: 0.85rem 0.9rem;
+  border-radius: 10px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-mobile a:hover {
+  background: rgb(255 255 255 / 4%);
+}
+
+.nav-mobile .btn {
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 900px) {
+  .nav-desktop {
+    display: flex;
+  }
+
+  .header-download {
+    display: inline-flex;
+  }
+
+  .menu-toggle,
+  .mobile-panel {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .header-github span {
+    display: none;
+  }
+}
